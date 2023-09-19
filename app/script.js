@@ -3,6 +3,18 @@ mytodo = [
     id: 1,
     note: "kkkk",
   },
+  {
+    id: 2,
+    note: "jjjj",
+  },
+  {
+    id: 3,
+    note: "jjj",
+  },
+  {
+    id: 4,
+    note: "jjjj",
+  },
 ];
 
 function makeTodoDiv(list) {
@@ -13,6 +25,12 @@ function makeTodoDiv(list) {
   var checkBox = document.createElement("input");
   checkBox.type = "checkbox";
   checkBox.setAttribute("id", `checkbox ${list["id"]}`);
+  checkBox.addEventListener("click", function jj() {
+    let v = document.getElementsByTagName("li");
+    for (let i = 0; i < v.length; i += 1) {
+      v.item(i).classList.toggle("checked");
+    }
+  });
 
   // Configure the label
   var label = document.createElement("label");
@@ -22,7 +40,7 @@ function makeTodoDiv(list) {
   const ul = document.createElement("ul");
   ul.setAttribute("class", "ul-class");
   const li = document.createElement("li");
-  li.setAttribute("class", "list-class");
+  // li.setAttribute("class", "list-class");
   li.setAttribute("id", `list${list["id"]}`);
 
   // li.innerText = list["note"];
@@ -40,6 +58,7 @@ function appendToApp(listDiv) {
   const app = document.querySelector("#todo-list");
   app.appendChild(listDiv);
 }
+
 function clearApp() {
   const app = document.querySelector("#todo-list");
   app.innerHTML = "";
@@ -68,16 +87,16 @@ submitButton.addEventListener("click", function () {
   submitButton.disabled = true;
   inputField.value = "";
 });
-updateUI();
-
-function dodajAktywne(elem) {
-  // get all 'a' elements
-  var a = document.getElementsByTagName("a");
-  // loop through all 'a' elements
-  for (i = 0; i < a.length; i++) {
-    // Remove the class 'active' if it exists
-    a[i].classList.remove("active");
-  }
-  // add 'active' classs to the element that was clicked
-  elem.classList.add("active");
+function saveToLocalStorage() {
+  const str = JSON.stringify(mytodo);
+  localStorage.setItem("my-todo-list", str);
 }
+function getFromLocalStorage() {
+  const str = localStorage.getItem("my-todo-list");
+  if (!str) {
+    MyNotes = [];
+  } else {
+    MyNotes = JSON.parse(str);
+  }
+}
+updateUI();
