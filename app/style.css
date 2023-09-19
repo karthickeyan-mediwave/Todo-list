@@ -32,15 +32,21 @@ h1 {
   margin: 20px 0px 20px 10px;
 }
 #todo-list {
-  background: antiquewhite;
+  background: #d5c4c6;
   padding: 25px;
+  height: 300px;
 }
 li {
   list-style: none;
 }
-
-ul li.checked {
-  text-decoration: line-through;
+#todo-list-checked {
+  background: #d5c4c6;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+hr {
+  margin: 0;
 }
 @media screen and (max-width: 992px) {
   .total-container {
