@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: sans-serif;
 }
 .todo-head {
@@ -19,4 +19,33 @@ input {
   height: 51px;
   border-radius: 5px;
   padding: 6px 36px;
+} */
+
+body {
+  font-family: sans-serif;
+}
+.todo-head {
+  background-color: dodgerblue;
+  text-align: center;
+}
+#inputField {
+  line-height: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+}
+#submitButton {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 3px;
+  width: 50px;
+  margin: 20px 0px 20px 10px;
+}
+#todo-list {
+  margin-top: 25px;
+}
+li {
+  list-style: none;
 }
