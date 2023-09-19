@@ -1,5 +1,5 @@
 mytodo = [];
-mytodocheck = [];
+// mytodocheck = [...mytodo];
 function makeTodoDiv(list) {
   // list div
   const div = document.createElement("div");
@@ -13,11 +13,16 @@ function makeTodoDiv(list) {
   checkBox.addEventListener("click", function jj() {
     let v = document.getElementsByTagName("li");
     uncheck();
+    updateUI();
   });
   function uncheck() {
     if (checkBox.checked == true) {
       li.style.textDecoration = "line-through";
-      kk.appendChild(ul);
+
+      sortlist(list["id"]);
+      // removenotes(list["id"]);
+      // kk.appendChild(ul);
+      ischecked = true;
       console.log("check");
     } else {
       checkBox.checked == false;
@@ -79,6 +84,7 @@ submitButton.addEventListener("click", function () {
   const todolist = {
     id: new Date().getTime(),
     note: list,
+    ischecked: false,
   };
   addNotes(todolist);
   submitButton.disabled = true;
@@ -104,5 +110,34 @@ function getFromLocalStorage() {
     mytodo = JSON.parse(str);
   }
 }
+
+function sortlist(todoId) {
+  const toDeleteIndex = mytodo.findIndex((list) => list.id == todoId);
+  console.log("Deleting ", todoId);
+  mytodo.push(mytodo.splice(toDeleteIndex, 1)[0]);
+  saveToLocalStorage();
+  updateUI;
+}
+// function removenotes(todoId) {
+//   console.log("Deleting ", todoId);
+//   const filteredArray = mytodo.filter((note) => note.id == todoId);
+//   mytodocheck.push(filteredArray);
+//   console.log(mytodocheck);
+//   saveToLocalStorage1;
+//   updateUI();
+// }
+// function saveToLocalStorage1() {
+//   const str = JSON.stringify(mytodocheck);
+//   localStorage.setItem("my-todo-list1", str);
+// }
+// function getFromLocalStorage1() {
+//   const str = localStorage.getItem("my-todo-list1");
+//   if (!str) {
+//     mytodocheck = [];
+//   } else {
+//     mytodocheck = JSON.parse(str);
+//   }
+// }
 getFromLocalStorage();
+// getFromLocalStorage1();
 updateUI();

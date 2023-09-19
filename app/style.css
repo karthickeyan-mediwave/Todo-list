@@ -38,6 +38,7 @@ h1 {
 }
 li {
   list-style: none;
+  width: 250px !important;
 }
 #todo-list-checked {
   background: #d5c4c6;
