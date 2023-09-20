@@ -49,6 +49,10 @@ li {
 hr {
   margin: 0;
 }
+h3 {
+  margin: 0;
+  padding: 5px 20px;
+}
 @media screen and (max-width: 992px) {
   .total-container {
     width: 60%;
